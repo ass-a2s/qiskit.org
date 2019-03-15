@@ -1,0 +1,15 @@
+qiskit.wrapper package
+======================
+
+.. automodule:: qiskit.wrapper
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   qiskit.wrapper._wrapper
+

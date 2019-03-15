@@ -7,8 +7,7 @@
  * the LICENSE.txt file in the root directory of this source tree.
  */
 
-import { html } from 'lit-element';
-import { PageViewElement } from './page-view-element.js';
+import { LitElement, html, css } from 'lit-element';
 import { localize } from '../pwa-helpers/i18next-localize-mixin.js';
 
 import { i18next } from '../i18next.js';
@@ -24,16 +23,15 @@ import { githubIcon } from './app-icons.js';
 import './vaadin-ibmq-styles/vaadin-button.js';
 import '@kuscamara/code-sample/code-sample.js';
 
-class PageAqua extends localize(i18next)(PageViewElement) {
-  render() {
-    // prettier-ignore
-    return html`
-      ${SharedStyles}
-      ${HeaderStyles}
-      ${SectionStyles}
-      ${SectionElementStyles}
-      ${StackListStyles}
-      <style>
+class PageAqua extends localize(i18next)(LitElement) {
+  static get styles() {
+    return [
+      SharedStyles,
+      HeaderStyles,
+      SectionStyles,
+      SectionElementStyles,
+      StackListStyles,
+      css`
         :host {
           --app-section-background-color: var(--qiskit-aqua-color);
           --app-section-color: #000000;
@@ -54,16 +52,21 @@ class PageAqua extends localize(i18next)(PageViewElement) {
 
         section .description .badges vaadin-button {
           --ibmq-button-secondary-color: #000000;
-          --ibmq-button-secondary-focus-color: #FFFFFF;
+          --ibmq-button-secondary-focus-color: #ffffff;
         }
 
         section .description img + img {
           margin-top: 1em;
         }
-      </style>
+      `,
+    ];
+  }
 
+  render() {
+    // prettier-ignore
+    return html`
       <header>
-        <img src="images/qiskit-aqua-logo.png" alt="${i18next.t('pages.aqua.altLogo')}">
+        <img src="images/qiskit-aqua-logo.png" .alt=${i18next.t('pages.aqua.altLogo')}>
         <div>
           <h1>
             ${i18next.t('pages.aqua.headerTitle')}
@@ -75,28 +78,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${githubIcon}
-                GitHub
-              </vaadin-button>
-            </a>
-            <a
-                href="${this.getDocumentationLink()}/aqua/"
-                target="_blank"
-                rel="noopener"
-                tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${i18next.t('documentation')}
-              </vaadin-button>
-            </a>
-            <a
-                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#1.5-Qiskit-Aqua"
-                target="_blank"
-                rel="noopener"
-                tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${i18next.t('tutorials')}
-              </vaadin-button>
+              <vaadin-button theme="secondary small">${githubIcon} GitHub</vaadin-button>
             </a>
           </div>
         </div>
@@ -202,33 +184,19 @@ class PageAqua extends localize(i18next)(PageViewElement) {
                   target="_blank"
                   rel="noopener"
                   tabindex="-1">
-                <vaadin-button theme="secondary small">
-                  ${githubIcon}
-                  GitHub
-                </vaadin-button>
-              </a>
-              <a
-                  href="${this.getDocumentationLink()}/aqua/aqua_chemistry.html"
-                  target="_blank"
-                  rel="noopener"
-                  tabindex="-1">
-                <vaadin-button theme="secondary small">
-                  ${i18next.t('documentation')}
-                </vaadin-button>
+                <vaadin-button theme="secondary small">${githubIcon} GitHub</vaadin-button>
               </a>
               <a
                   href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorials/blob/master/qiskit/aqua/chemistry/index.ipynb"
                   target="_blank"
                   rel="noopener"
                   tabindex="-1">
-                <vaadin-button theme="secondary small">
-                  ${i18next.t('tutorials')}
-                </vaadin-button>
+                <vaadin-button theme="secondary small">${i18next.t('tutorials')}</vaadin-button>
               </a>
             </div>
             <p>${i18next.t('pages.aqua.chemistryDescription')}</p>
-            <img src="images/aqua/aqua-chemistry-LiHEnergy.gif" alt="${i18next.t('pages.aqua.entanglionAltImage')}">
-            <img src="images/aqua/aqua-chemistry-LiHDipole.gif" alt="${i18next.t('pages.aqua.entanglionAltImage')}">
+            <img src="images/aqua/aqua-chemistry-LiHEnergy.gif" .alt=${i18next.t('pages.aqua.entanglionAltImage')}>
+            <img src="images/aqua/aqua-chemistry-LiHDipole.gif" .alt=${i18next.t('pages.aqua.entanglionAltImage')}>
           </div>
           <div class="illustration">
             <h3>${i18next.t('pages.aqua.installTitle')}</h3>
@@ -302,7 +270,7 @@ class PageAqua extends localize(i18next)(PageViewElement) {
             <p>${i18next.t('pages.aqua.chemistryGuiDescription3')}</p>
           </div>
           <div class="illustration">
-            <img src="images/aqua/aqua-chemistry-gui.gif" alt="${i18next.t('pages.aqua.chemistryGuiAltImage')}">
+            <img src="images/aqua/aqua-chemistry-gui.gif" .alt=${i18next.t('pages.aqua.chemistryGuiAltImage')}>
           </div>
         </div>
       </section>

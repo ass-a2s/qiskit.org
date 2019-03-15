@@ -7,10 +7,12 @@
  * the LICENSE.txt file in the root directory of this source tree.
  */
 
-import { LitElement, html } from 'lit-element';
+import { LitElement, html, css } from 'lit-element';
 import { setPassiveTouchGestures } from '@polymer/polymer/lib/utils/settings.js';
+import '@polymer/app-layout/app-drawer/app-drawer.js';
+import '@polymer/app-layout/app-toolbar/app-toolbar.js';
 import { connect } from 'pwa-helpers/connect-mixin.js';
-import { installRouter } from 'pwa-helpers/router.js';
+import { installMediaQueryWatcher } from 'pwa-helpers/media-query.js';
 import { updateMetadata } from 'pwa-helpers/metadata.js';
 import { localize } from '../pwa-helpers/i18next-localize-mixin.js';
 
@@ -18,26 +20,35 @@ import { i18next } from '../i18next.js';
 import { store } from '../store.js';
 
 // These are the actions needed by this element.
-import { navigate } from '../actions/app.js';
+import { navigate, updateDrawerState } from '../actions/app.js';
 
 import { SharedStyles } from './app-shared-styles.js';
 
 class AppShell extends localize(i18next)(connect(store)(LitElement)) {
-  render() {
-    // prettier-ignore
-    return html`
-      ${SharedStyles}
-      <style>
+  static get properties() {
+    return {
+      page: { type: String },
+      drawerOpened: { type: Boolean },
+    };
+  }
+
+  static get styles() {
+    return [
+      SharedStyles,
+      css`
         :host {
           --app-primary-color: #8a3ffc;
           --app-secondary-color: #242a2e;
+          --app-header-color: #21252b;
 
           --qiskit-terra-color: #8c8c8c;
           --qiskit-aqua-color: #30b0ff;
           --qiskit-aer-color: #b3e6ff;
           --qiskit-ignis-color: #20d5d2;
 
-          --qiskit-vscode-color: #F5F5F5;
+          --qiskit-vscode-color: #f5f5f5;
+
+          --app-drawer-width: 256px;
 
           display: flex;
           flex-direction: column;
@@ -48,16 +59,41 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
 
         header {
           display: flex;
-          background-color: #21252b;
+          background-color: var(--app-header-color);
           height: 60px;
-          border-bottom: 1px solid #181B20;
+          border-bottom: 1px solid #181b20;
+        }
+
+        app-drawer {
+          z-index: 1000;
+        }
+
+        .drawer-list {
+          box-sizing: border-box;
+          width: 100%;
+          height: 100%;
+          padding: 24px;
+          background: var(--app-header-color);
+          position: relative;
+        }
+
+        .drawer-list > a {
+          display: block;
+          text-decoration: none;
+          color: #ffffff;
+          line-height: 40px;
+          padding: 0 24px;
+        }
+
+        .drawer-list > span {
+          color: gray;
+          display: block;
+          font-size: 0.9em;
+          padding: 1em;
         }
 
         .toolbar {
-          display: flex;
-          flex-grow: 1;
-          box-sizing: border-box;
-          position: relative;
+          display: none;
         }
 
         .toolbar a {
@@ -66,7 +102,7 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
           text-decoration: none;
           padding: 0 1em;
           font-weight: 300;
-          color: #FFFFFF;
+          color: #ffffff;
           flex: none;
         }
 
@@ -75,7 +111,8 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
           margin-left: -1em; /* Reduce the 1em padding from the <a> */
         }
 
-        .toolbar nav {
+        .toolbar nav,
+        .toolbar-top {
           display: flex;
         }
 
@@ -97,11 +134,16 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
         .toolbar nav > a[selected]::after {
           content: '';
           height: 2px;
-          background-color: #FFFFFF;
+          background-color: #ffffff;
           position: absolute;
           bottom: 0;
           left: 0;
           right: 0;
+        }
+
+        .toolbar-top > a.home {
+          color: #ffffff;
+          font-weight: 500;
         }
 
         /* Workaround for IE11 displaying <main> as inline */
@@ -111,21 +153,21 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
           flex-direction: column;
         }
 
-        main > * {
-          display: none;
-        }
-
-        main > *[active] {
-          display: flex;
-          flex-direction: column;
+        .menu-btn {
+          background: none;
+          border: none;
+          fill: #ffffff;
+          cursor: pointer;
+          height: 44px;
+          width: 44px;
         }
 
         footer {
           display: flex;
-          background-color: #21252B;
-          color: #FFFFFF;
+          background-color: #21252b;
+          color: #ffffff;
           height: 80px;
-          border-top: 1px solid #181B20;
+          border-top: 1px solid #181b20;
         }
 
         footer .limited-width {
@@ -135,7 +177,7 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
         }
 
         footer .limited-width .language-selector span {
-          padding: 0 .2em;
+          padding: 0 0.2em;
           cursor: pointer;
         }
 
@@ -143,63 +185,103 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
           text-decoration: underline;
         }
 
-        @media (max-width: 440px) {
-          .toolbar nav.second {
-            position: absolute;
-            right: 5px;
-            bottom: -30px;
-            font-size: 0.9em;
+        @media (min-width: 800px) {
+          .toolbar {
+            display: flex;
+            flex-grow: 1;
+            box-sizing: border-box;
+            position: relative;
+          }
+
+          .toolbar-top {
+            display: none;
           }
         }
-      </style>
+      `,
+    ];
+  }
 
+  render() {
+    const currentYear = new Date().getFullYear();
+    const menuIcon = html`
+      <svg height="24" viewBox="0 0 24 24" width="24">
+        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+      </svg>
+    `;
+
+    // prettier-ignore
+    return html`
       <header>
+        <app-toolbar class="toolbar-top">
+          <button class="menu-btn" title="Menu" @click="${this.menuButtonClicked}">${menuIcon}</button>
+          <a href="/" class="home">Qiskit ™</a>
+        </app-toolbar>
+
+        <!-- This gets hidden on a small screen-->
         <div class="toolbar limited-width">
           <a href="/" class="home">Qiskit ™</a>
           <nav class="first">
-            <a href="/terra" ?selected="${this.page === 'terra'}">Terra</a>
-            <a href="/aqua" ?selected="${this.page === 'aqua'}">Aqua</a>
-            <a href="/aer" ?selected="${this.page === 'aer'}">Aer</a>
+            <a href="/terra" ?selected=${this.page === 'terra'}>Terra</a>
+            <a href="/aer" ?selected=${this.page === 'aer'}>Aer</a>
+            <a href="/aqua" ?selected=${this.page === 'aqua'}>Aqua</a>
+            <a href="/ignis" ?selected=${this.page === 'ignis'}>Ignis</a>
           </nav>
           <nav class="second">
-            <a href="/vscode" ?selected="${this.page === 'vscode'}">${i18next.t('tools')}</a>
-            <a href="/fun" ?selected="${this.page === 'fun'}">${i18next.t('fun')}</a>
+            <a
+                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb"
+                rel="noopener"
+                target="_blank">
+              ${i18next.t('tutorials')}
+            </a>
+            <a href="/documentation">${i18next.t('documentation')}</a>
+            <a href="/vscode" ?selected=${this.page === 'vscode'}>${i18next.t('tools')}</a>
+            <a href="/fun" ?selected=${this.page === 'fun'}>${i18next.t('fun')}</a>
           </nav>
         </div>
       </header>
 
+      <app-drawer
+          .opened="${this.drawerOpened}"
+          @opened-changed="${this.drawerOpenedChanged}">
+        <nav class="drawer-list">
+          <span>Elements</span>
+          <a href="/terra" ?selected=${this.page === 'terra'}>Terra</a>
+          <a href="/aer" ?selected=${this.page === 'aer'}>Aer</a>
+          <a href="/aqua" ?selected=${this.page === 'aqua'}>Aqua</a>
+          <a href="/ignis" ?selected=${this.page === 'ignis'}>Ignis</a>
+          <span>Tools</span>
+          <a
+              href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb"
+              rel="noopener"
+              target="_blank">
+            ${i18next.t('tutorials')}
+          </a>
+          <a href="/documentation">${i18next.t('documentation')}</a>
+          <a href="/vscode" ?selected=${this.page === 'vscode'}>${i18next.t('tools')}</a>
+          <a href="/fun" ?selected=${this.page === 'fun'}>${i18next.t('fun')}</a>
+        </nav>
+      </app-drawer>
+
       <main role="main">
-        <page-home ?active="${this.page === 'home'}"></page-home>
-        <page-terra ?active="${this.page === 'terra'}"></page-terra>
-        <page-aqua ?active="${this.page === 'aqua'}"></page-aqua>
-        <page-aer ?active="${this.page === 'aer'}"></page-aer>
-        <page-vscode ?active="${this.page === 'vscode'}"></page-vscode>
-        <page-fun ?active="${this.page === 'fun'}"></page-fun>
-        <page-not-found ?active="${this.page === 'notFound'}"></page-not-found>
+        <!-- added / removed dynamically by the router -->
       </main>
 
       <footer>
         <div class="limited-width">
           <div class="language-selector">
             <select
-                @change="${this.changeLanguage}"
+                @change=${this.changeLanguage}
                 aria-label="Language"
-                value="${i18next.languages[0]}">
-              <option value="en" ?selected="${i18next.languages[0] === 'en'}">English</option>
-              <option value="de" ?selected="${i18next.languages[0] === 'de'}">German</option>
-              <!-- <option value="ja" ?selected="${i18next.languages[0] === 'ja'}">Japanese</option> -->
+                .value=${i18next.languages[0]}>
+              <option value="en" ?selected=${i18next.languages[0] === 'en'}>English</option>
+              <option value="de" ?selected=${i18next.languages[0] === 'de'}>German</option>
+              <!-- <option value="ja" ?selected=${i18next.languages[0] === 'ja'}>Japanese</option> -->
             </select>
           </div>
-          <div class="copyright">© 2018 IBM</div>
+          <div class="copyright">© ${currentYear} IBM</div>
         </div>
       </footer>
     `;
-  }
-
-  static get properties() {
-    return {
-      page: { type: String },
-    };
   }
 
   constructor() {
@@ -211,14 +293,19 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
   }
 
   firstUpdated() {
-    installRouter((location, event) => {
-      // Only scroll to top on link clicks, not popstate events.
-      if (event && event.type === 'click') {
-        window.scrollTo(0, 0);
-      }
+    window.addEventListener('vaadin-router-location-changed', event =>
+      store.dispatch(navigate(event.detail.location)),
+    );
 
-      store.dispatch(navigate(window.decodeURIComponent(location.pathname)));
+    // To have better first-load performance, defer loading all routing code
+    // until after the app shell is rendered.
+    import('../router.js').then(routing => {
+      routing.init(this.shadowRoot.querySelector('main'));
     });
+
+    installMediaQueryWatcher(`(min-width: 800px)`, () =>
+      store.dispatch(updateDrawerState(false)),
+    );
   }
 
   updated(changedProperties) {
@@ -232,10 +319,19 @@ class AppShell extends localize(i18next)(connect(store)(LitElement)) {
 
   stateChanged(state) {
     this.page = state.app.page;
+    this.drawerOpened = state.app.drawerOpened;
   }
 
   changeLanguage(event) {
     i18next.changeLanguage(event.target.value);
+  }
+
+  menuButtonClicked() {
+    store.dispatch(updateDrawerState(true));
+  }
+
+  drawerOpenedChanged(e) {
+    store.dispatch(updateDrawerState(e.target.opened));
   }
 }
 

@@ -30,7 +30,10 @@
       "ibmQExperienceButton": "Ausprobieren",
       "ibmQExperienceAltImage": "Screenshot des IBM Q Experience Composers",
       "supportingTitle": "Unterstützende Organisationen und Mitwirkende",
-      "supportingDescription": "Unsere Qiskitter Community setzt sich aus verschiedenen, weit verteilten Organisationen zusammen. Wenn du ein Mitwirkender bist und aufgelistet werden möchtest, schreibe uns bitte eine E-Mail an qiskit@qiskit.org. Danke und frohes Entwickeln!"
+      "supportingDescription": "Unsere Qiskitter Community setzt sich aus verschiedenen, weit verteilten Organisationen zusammen. Wenn du ein Mitwirkender bist und aufgelistet werden möchtest, schreibe uns bitte eine E-Mail an qiskit@qiskit.org. Danke und frohes Entwickeln!",
+      "citationTitle": "Zitat",
+      "citationDescription": "Wenn Sie Qiskit verwenden, zitieren Sie es bitte gemäß der mitgelieferten ",
+      "bibtexLink": "BibTeX-Datei"
     },
     "terra": {
       "metaTitle": "$t(pages.terra.headerTitle) | $t(pages.terra.headerSubTitle)",
@@ -76,6 +79,19 @@
       "altLogo": "$t(pages.aer.headerTitle) logo",
       "aboutTitle": "Über",
       "aboutDescription": "Qiskit Aer liefert eine leistungsstarke Simulationsumgebung für den Qiskit Software Stack. Es enthält einen optimierten C++ Simulator als Backend zum Ausführen von in Qiskit Terra kompilierten Schaltungen sowie Werkzeuge zum Aufbau von hochgradig konfigurierbaren Rauschmodellen, die zur Simulation von realistischem Rauschen bei der Ausführung auf echten Geräten notwendig sind.",
+      "stackTitle": "Stack",
+      "installTitle": "Installation",
+      "pythonIsRequired": "Python >=3.5 wird benötigt",
+      "exampleTitle": "Beispiel"
+    },
+    "ignis": {
+      "metaTitle": "$t(pages.ignis.headerTitle) | $t(pages.ignis.headerSubTitle)",
+      "metaDescription": "$t(pages.ignis.headerSubTitle)",
+      "headerTitle": "Qiskit Ignis",
+      "headerSubTitle": "Rauschen in Quantengeräten verstehen und abschwächen.",
+      "altLogo": "$t(pages.ignis.headerTitle) logo",
+      "aboutTitle": "Über",
+      "aboutDescription": "Qiskit Ignis ist ein Framework zum Verständnis und zur Verringerung von Rauschen in Quantenschaltkreisen und -geräten. Ignis bietet in sich geschlossene Experimente an, die Werkzeuge zur Erzeugung der Schaltkreise umfassen, die auf realen Backends über Terra (oder Simulatoren über Aer) ausgeführt werden können, und Werkzeuge zur Anpassung der Ergebnisse und zur Analyse der Daten. Die in Ignis bereitgestellten Experimente sind nach den Themen Charakterisierung, Verifizierung und Minderung gegliedert. Charakterisierungsexperimente wie T1 (Qubit-Lebensdauer) und T2 (Qubit-Dephasing) dienen zur Messung von Rauschparametern im System. Verifikationsexperimente wie randomisiertes Benchmarking und Tomographie sollen die Leistung von Gattern und kleinen Schaltkreisen überprüfen. Mitigationsexperimente führen Kalibrierungsschaltungen aus, die analysiert werden, um Abschwächungsroutinen zu generieren, die auf beliebige Sätze von Ergebnissen angewendet werden können, die im selben Backend ausgeführt werden.",
       "stackTitle": "Stack",
       "installTitle": "Installation",
       "pythonIsRequired": "Python >=3.5 wird benötigt",

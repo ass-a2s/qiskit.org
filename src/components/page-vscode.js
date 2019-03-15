@@ -7,8 +7,7 @@
  * the LICENSE.txt file in the root directory of this source tree.
  */
 
-import { html } from 'lit-element';
-import { PageViewElement } from './page-view-element.js';
+import { LitElement, html, css } from 'lit-element';
 import { localize } from '../pwa-helpers/i18next-localize-mixin.js';
 
 import { i18next } from '../i18next.js';
@@ -21,14 +20,13 @@ import {
 import { githubIcon } from './app-icons.js';
 import './vaadin-ibmq-styles/vaadin-button.js';
 
-class PageVscode extends localize(i18next)(PageViewElement) {
-  render() {
-    // prettier-ignore
-    return html`
-      ${SharedStyles}
-      ${HeaderStyles}
-      ${SectionStyles}
-      <style>
+class PageVscode extends localize(i18next)(LitElement) {
+  static get styles() {
+    return [
+      SharedStyles,
+      HeaderStyles,
+      SectionStyles,
+      css`
         :host {
           --app-section-background-color: var(--qiskit-vscode-color);
           --app-section-color: #222222;
@@ -41,7 +39,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           flex: 1;
         }
 
-        .install .row .step:nth-child(n+2) {
+        .install .row .step:nth-child(n + 2) {
           margin-top: 1em;
         }
 
@@ -53,7 +51,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          margin-right: .8em;
+          margin-right: 0.8em;
         }
 
         .install .row .step .title {
@@ -71,7 +69,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
             align-items: center;
           }
 
-          .install .row .step:nth-child(n+2) {
+          .install .row .step:nth-child(n + 2) {
             margin-top: 0;
           }
 
@@ -89,10 +87,15 @@ class PageVscode extends localize(i18next)(PageViewElement) {
             flex: 7;
           }
         }
-      </style>
+      `,
+    ];
+  }
 
+  render() {
+    // prettier-ignore
+    return html`
       <header>
-        <img src="images/qiskit-logo.png" alt="${i18next.t('pages.home.altLogo')}">
+        <img src="images/qiskit-logo.png" .alt=${i18next.t('pages.home.altLogo')}>
         <div>
           <h1>${i18next.t('pages.vscode.headerTitle')}</h1>
           <h2>${i18next.t('pages.vscode.headerSubTitle')}</h2>
@@ -102,10 +105,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${githubIcon}
-                GitHub
-              </vaadin-button>
+              <vaadin-button theme="secondary small">${githubIcon} GitHub</vaadin-button>
             </a>
             <a
                 href="https://marketplace.visualstudio.com/items?itemName=qiskit.qiskit-vscode"
@@ -157,7 +157,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           <div class="illustration">
             <video autoplay loop muted playsinline disableRemotePlayback
                 poster="images/vscode/qiskit-vscode-autocomplete.jpg"
-                @click="${event => this.tooglePausedVideo(event)}">
+                @click=${event => this.tooglePausedVideo(event)}>
               <source src="videos/qiskit-vscode-autocomplete.webm" type="video/webm">
               <source src="videos/qiskit-vscode-autocomplete.mp4" type="video/mp4">
             </video>
@@ -174,7 +174,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           <div class="illustration">
             <video autoplay loop muted playsinline disableRemotePlayback
                 poster="images/vscode/qiskit-vscode-documentation.jpg"
-                @click="${event => this.tooglePausedVideo(event)}">
+                @click=${event => this.tooglePausedVideo(event)}>
               <source src="videos/qiskit-vscode-documentation.webm" type="video/webm">
               <source src="videos/qiskit-vscode-documentation.mp4" type="video/mp4">
             </video>
@@ -191,7 +191,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           <div class="illustration">
             <video autoplay loop muted playsinline disableRemotePlayback
                 poster="images/vscode/qiskit-vscode-linter.jpg"
-                @click="${event => this.tooglePausedVideo(event)}">
+                @click=${event => this.tooglePausedVideo(event)}>
               <source src="videos/qiskit-vscode-linter.webm" type="video/webm">
               <source src="videos/qiskit-vscode-linter.mp4" type="video/mp4">
             </video>
@@ -208,7 +208,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           <div class="illustration">
             <video autoplay loop muted playsinline disableRemotePlayback
                 poster="images/vscode/qiskit-vscode-snippet.jpg"
-                @click="${event => this.tooglePausedVideo(event)}">
+                @click=${event => this.tooglePausedVideo(event)}>
               <source src="videos/qiskit-vscode-snippet.webm" type="video/webm">
               <source src="videos/qiskit-vscode-snippet.mp4" type="video/mp4">
             </video>
@@ -225,7 +225,7 @@ class PageVscode extends localize(i18next)(PageViewElement) {
           <div class="illustration">
             <video autoplay loop muted playsinline disableRemotePlayback
                 poster="images/vscode/qiskit-vscode-integrated-tools.jpg"
-                @click="${event => this.tooglePausedVideo(event)}">
+                @click=${event => this.tooglePausedVideo(event)}>
               <source src="videos/qiskit-vscode-integrated-tools.webm" type="video/webm">
               <source src="videos/qiskit-vscode-integrated-tools.mp4" type="video/mp4">
             </video>

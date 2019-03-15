@@ -7,8 +7,7 @@
  * the LICENSE.txt file in the root directory of this source tree.
  */
 
-import { html } from 'lit-element';
-import { PageViewElement } from './page-view-element.js';
+import { LitElement, html, css } from 'lit-element';
 import { localize } from '../pwa-helpers/i18next-localize-mixin.js';
 
 import { i18next } from '../i18next.js';
@@ -24,16 +23,15 @@ import { githubIcon } from './app-icons.js';
 import './vaadin-ibmq-styles/vaadin-button.js';
 import '@kuscamara/code-sample/code-sample.js';
 
-class PageAer extends localize(i18next)(PageViewElement) {
-  render() {
-    // prettier-ignore
-    return html`
-      ${SharedStyles}
-      ${HeaderStyles}
-      ${SectionStyles}
-      ${SectionElementStyles}
-      ${StackListStyles}
-      <style>
+class PageAer extends localize(i18next)(LitElement) {
+  static get styles() {
+    return [
+      SharedStyles,
+      HeaderStyles,
+      SectionStyles,
+      SectionElementStyles,
+      StackListStyles,
+      css`
         :host {
           --app-section-background-color: var(--qiskit-aer-color);
           --app-section-color: #000000;
@@ -50,10 +48,15 @@ class PageAer extends localize(i18next)(PageViewElement) {
           border-radius: 50%;
           left: -1.4em;
         }
-      </style>
+      `,
+    ];
+  }
 
+  render() {
+    // prettier-ignore
+    return html`
       <header>
-        <img src="images/qiskit-aer-logo.png" alt="${i18next.t('pages.aer.altLogo')}">
+        <img src="images/qiskit-aer-logo.png" .alt=${i18next.t('pages.aer.altLogo')}>
         <div>
           <h1>
             ${i18next.t('pages.aer.headerTitle')}
@@ -65,19 +68,7 @@ class PageAer extends localize(i18next)(PageViewElement) {
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${githubIcon}
-                GitHub
-              </vaadin-button>
-            </a>
-            <a
-                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#1.3-Qiskit-Aer"
-                target="_blank"
-                rel="noopener"
-                tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${i18next.t('tutorials')}
-              </vaadin-button>
+              <vaadin-button theme="secondary small">${githubIcon} GitHub</vaadin-button>
             </a>
           </div>
         </div>
@@ -91,8 +82,8 @@ class PageAer extends localize(i18next)(PageViewElement) {
             <h3>${i18next.t('pages.aer.stackTitle')}</h3>
             <div class="stack-list">
               <div class="element">
-                <div class="title">Qobj</div>
-                <div class="subtitle">OpenQASM</div>
+                <div class="title">Qiskit Terra</div>
+                <div class="subtitle">Quantum Circuit</div>
               </div>
               <div class="element">
                 <div class="title">Noise model</div>

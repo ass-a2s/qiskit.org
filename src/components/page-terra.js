@@ -7,8 +7,7 @@
  * the LICENSE.txt file in the root directory of this source tree.
  */
 
-import { html } from 'lit-element';
-import { PageViewElement } from './page-view-element.js';
+import { LitElement, html, css } from 'lit-element';
 import { localize } from '../pwa-helpers/i18next-localize-mixin.js';
 
 import { i18next } from '../i18next.js';
@@ -24,16 +23,15 @@ import { githubIcon } from './app-icons.js';
 import './vaadin-ibmq-styles/vaadin-button.js';
 import '@kuscamara/code-sample/code-sample.js';
 
-class PageTerra extends localize(i18next)(PageViewElement) {
-  render() {
-    // prettier-ignore
-    return html`
-      ${SharedStyles}
-      ${HeaderStyles}
-      ${SectionStyles}
-      ${SectionElementStyles}
-      ${StackListStyles}
-      <style>
+class PageTerra extends localize(i18next)(LitElement) {
+  static get styles() {
+    return [
+      SharedStyles,
+      HeaderStyles,
+      SectionStyles,
+      SectionElementStyles,
+      StackListStyles,
+      css`
         :host {
           --app-section-background-color: var(--qiskit-terra-color);
           --app-section-color: #000000;
@@ -50,10 +48,15 @@ class PageTerra extends localize(i18next)(PageViewElement) {
           border-radius: 50%;
           left: -1.4em;
         }
-      </style>
+      `,
+    ];
+  }
 
+  render() {
+    // prettier-ignore
+    return html`
       <header>
-        <img src="images/qiskit-terra-logo.png" alt="${i18next.t('pages.terra.altLogo')}">
+        <img src="images/qiskit-terra-logo.png" .alt=${i18next.t('pages.terra.altLogo')}>
         <div>
           <h1>
             ${i18next.t('pages.terra.headerTitle')}
@@ -65,28 +68,7 @@ class PageTerra extends localize(i18next)(PageViewElement) {
                 target="_blank"
                 rel="noopener"
                 tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${githubIcon}
-                GitHub
-              </vaadin-button>
-            </a>
-            <a
-                href="${this.getDocumentationLink()}/"
-                target="_blank"
-                rel="noopener"
-                tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${i18next.t('documentation')}
-              </vaadin-button>
-            </a>
-            <a
-                href="https://nbviewer.jupyter.org/github/Qiskit/qiskit-tutorial/blob/master/index.ipynb#1.2-Qiskit-Terra"
-                target="_blank"
-                rel="noopener"
-                tabindex="-1">
-              <vaadin-button theme="secondary small">
-                ${i18next.t('tutorials')}
-              </vaadin-button>
+              <vaadin-button theme="secondary small">${githubIcon} GitHub</vaadin-button>
             </a>
           </div>
         </div>

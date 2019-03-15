@@ -1,0 +1,27 @@
+qiskit.transpiler package
+=========================
+
+.. automodule:: qiskit.transpiler
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    qiskit.transpiler.passes
+
+Submodules
+----------
+
+.. toctree::
+
+   qiskit.transpiler._basepasses
+   qiskit.transpiler._fencedobjs
+   qiskit.transpiler._passmanager
+   qiskit.transpiler._propertyset
+   qiskit.transpiler._transpiler
+   qiskit.transpiler._transpilererror
+

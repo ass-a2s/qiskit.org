@@ -30,7 +30,10 @@
       "ibmQExperienceButton": "Try it out",
       "ibmQExperienceAltImage": "Screenshot of the IBM Q Experience composer",
       "supportingTitle": "Supporting organizations and collaborators",
-      "supportingDescription": "Our Qiskitters community come from a broad range of organizations. If you are a contributor and would like to be listed, please email qiskit@qiskit.org. Thanks and keep developing!"
+      "supportingDescription": "Our Qiskitters community come from a broad range of organizations. If you are a contributor and would like to be listed, please email qiskit@qiskit.org. Thanks and keep developing!",
+      "citationTitle": "Citation",
+      "citationDescription": "If you use Qiskit, please cite it as per the included",
+      "bibtexLink": "BibTeX file"
     },
     "terra": {
       "metaTitle": "$t(pages.terra.headerTitle) | $t(pages.terra.headerSubTitle)",
@@ -76,6 +79,19 @@
       "altLogo": "$t(pages.aer.headerTitle) logo",
       "aboutTitle": "About",
       "aboutDescription": "Qiskit Aer provides a high performance simulator framework for the Qiskit software stack. It contains optimized C++ simulator backends for executing circuits compiled in Qiskit Terra, and tools for constructing highly configurable noise models for performing realistic noisy simulations of the errors that occur during execution on real devices.",
+      "stackTitle": "Stack",
+      "installTitle": "Install",
+      "pythonIsRequired": "Python >=3.5 is required",
+      "exampleTitle": "Example"
+    },
+    "ignis": {
+      "metaTitle": "$t(pages.ignis.headerTitle) | $t(pages.ignis.headerSubTitle)",
+      "metaDescription": "$t(pages.ignis.headerSubTitle)",
+      "headerTitle": "Qiskit Ignis",
+      "headerSubTitle": "Understanding and mitigating noise in quantum devices.",
+      "altLogo": "$t(pages.ignis.headerTitle) logo",
+      "aboutTitle": "About",
+      "aboutDescription": "Qiskit Ignis is a framework for understanding and mitigating noise in quantum circuits and devices. Ignis provides self-contained experiments that include tools for generating the circuits that can be executed on real backends via Terra (or on simulators via Aer) and the tools for fitting the results and analysing the data. The experiments provided in Ignis are grouped into the topics of characterization, verification and mitigation. Characterization experiments, such as T1 (qubit lifetime) and T2 (qubit dephasing), are designed to measure noise parameters in the system. Verification experiments, such as randomized benchmarking and tomography, are designed to verify gate and small circuit performance. Mitigation experiments run calibration circuits that are analysed to generate mitigation routines that can be applied to arbitrary sets of results run on the same backend.",
       "stackTitle": "Stack",
       "installTitle": "Install",
       "pythonIsRequired": "Python >=3.5 is required",

@@ -1,0 +1,19 @@
+qiskit.qobj package
+===================
+
+.. automodule:: qiskit.qobj
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   qiskit.qobj._converter
+   qiskit.qobj._qobj
+   qiskit.qobj._schema_validation
+   qiskit.qobj._utils
+   qiskit.qobj._validation
+

@@ -8,82 +8,28 @@
  */
 
 export const UPDATE_PAGE = 'UPDATE_PAGE';
+export const UPDATE_DRAWER_STATE = 'UPDATE_DRAWER_STATE';
 
 const updatePage = page => ({
   type: UPDATE_PAGE,
   page,
 });
 
-const loadPage = page => dispatch => {
-  switch (page) {
-    case 'home':
-      import('../components/page-home.js').then(() => {
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-aer.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
-      break;
-    case 'terra':
-      import('../components/page-terra.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-aqua.js');
-        import('../components/page-aer.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
-      break;
-    case 'aqua':
-      import('../components/page-aqua.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aer.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
-      break;
-    case 'aer':
-      import('../components/page-aer.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-vscode.js');
-        import('../components/page-fun.js');
-      });
-      break;
-    case 'vscode':
-      import('../components/page-vscode.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-aer.js');
-        import('../components/page-fun.js');
-      });
-      break;
-    case 'fun':
-      import('../components/page-fun.js').then(() => {
-        import('../components/page-home.js');
-        import('../components/page-terra.js');
-        import('../components/page-aqua.js');
-        import('../components/page-aer.js');
-        import('../components/page-vscode.js');
-      });
-      break;
-    default:
-      // eslint-disable-next-line no-param-reassign
-      page = 'notFound';
-      import('../components/page-not-found.js');
-  }
-
-  dispatch(updatePage(page));
+export const updateDrawerState = opened => {
+  return {
+    type: UPDATE_DRAWER_STATE,
+    opened,
+  };
 };
 
-export const navigate = path => dispatch => {
-  // Extract the page name from path.
-  const page = path === '/' ? 'home' : path.slice(1);
+export const navigate = location => dispatch => {
+  // Extract the page name from location.
+  const page = location.route.name;
 
-  // Any other info you might want to extract from the path (like page type),
+  // Any other info you might want to extract from the location (like page type),
   // you can do here
-  dispatch(loadPage(page));
+  dispatch(updatePage(page));
+
+  // Close the drawer - in case the *path* change came from a link in the drawer.
+  dispatch(updateDrawerState(false));
 };

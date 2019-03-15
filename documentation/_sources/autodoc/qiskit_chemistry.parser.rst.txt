@@ -1,0 +1,15 @@
+qiskit\_chemistry.parser package
+================================
+
+.. automodule:: qiskit_chemistry.parser
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   qiskit_chemistry.parser._inputparser
+

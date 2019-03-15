@@ -1,0 +1,16 @@
+qiskit.dagcircuit package
+=========================
+
+.. automodule:: qiskit.dagcircuit
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+
+   qiskit.dagcircuit._dagcircuit
+   qiskit.dagcircuit._dagcircuiterror
+
