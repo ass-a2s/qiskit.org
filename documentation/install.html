@@ -59,6 +59,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -84,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
@@ -339,7 +356,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="aqua/oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -682,6 +699,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -707,6 +740,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
@@ -962,7 +996,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="aqua/oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="aqua/oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -1324,28 +1358,44 @@ the following:</p>
 other applications and improve your experience.</p>
 <p>The simplest way to use environments is by using the <code class="docutils literal notranslate"><span class="pre">conda</span></code> command,
 included with Anaconda. A Conda environment allows you to specify a specific
-version of Python and set of libraries. Run the following commands from a
-terminal window:</p>
+version of Python and set of libraries. Open a terminal window in the directory
+where you want to work.</p>
+<p>Create a minimal environment with only Python installed in it.</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">name_of_my_env</span> <span class="n">python</span><span class="o">=</span><span class="mi">3</span>
 </pre></div>
 </div>
-<p>This will create a minimal environment with only Python installed in it. To put
-yourself inside this environment run:</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="n">activate</span> <span class="n">name_of_my_env</span>
 </pre></div>
 </div>
-<p>On Windows the command is:</p>
+<p>Or, if you’re using Windows, use the following command.</p>
 <div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">activate</span> <span class="n">name_of_my_env</span>
 </pre></div>
 </div>
-<p>The final step required is to install Qiskit with the following command:</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aqua</span>
+<p>Next, install the Qiskit package, which includes Terra, Aer, and Ignis.
+Then, install Qiskit Aqua.</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span>
 </pre></div>
 </div>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aqua</span>
+</pre></div>
+</div>
+<p>If the packages installed correctly, you can run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">list</span></code> to see the active
+packages in your virtual environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">During installation, you might see the warning message
+<code class="docutils literal notranslate"><span class="pre">Failed</span> <span class="pre">to</span> <span class="pre">build</span> <span class="pre">qiskit</span></code>. This is a non-fatal error that does not affect
+installation.</p>
+</div>
 <p>There are optional dependencies that are required to use all the visualization
-functions available in Qiskit. You can install Qiskit along with these optional
-dependencies by running</p>
-<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span><span class="p">[</span><span class="n">visualization</span><span class="p">]</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">aqua</span>
+functions available in Qiskit. You can install these optional
+dependencies by with the following command</p>
+<div class="code sh highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">qiskit</span><span class="o">-</span><span class="n">terra</span><span class="p">[</span><span class="n">visualization</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>After you’ve installed and verified the Qiskit packages you want to use, import
+them into your environment with Python to begin working.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit</span>
 </pre></div>
 </div>
 </div>
@@ -1376,8 +1426,8 @@ repository:</p>
 </ol>
 <p>For more information see:</p>
 <ul class="simple">
-<li><a class="reference internal" href="install/terra.html#install-terra-source"><span class="std std-ref">Installing Qiskit Terra from Source</span></a></li>
-<li><a class="reference external" href="https://github.com/Qiskit/qiskit-aer/blob/master/.github/CONTRIBUTING.rst">Qiskit Aer</a></li>
+<li><a class="reference external" href="https://github.com/Qiskit/qiskit-terra/blob/master/.github/CONTRIBUTING.rst">Qiskit Terra</a></li>
+<li><a class="reference external" href="https://github.com/Qiskit/qiskit-aer/blob/master/.github/CONTRIBUTING.md">Qiskit Aer</a></li>
 <li><a class="reference external" href="https://github.com/Qiskit/qiskit-ignis/blob/master/.github/CONTRIBUTING.md">Qiskit Ignis</a></li>
 <li><a class="reference external" href="https://github.com/Qiskit/qiskit-aqua/blob/master/.github/CONTRIBUTING.rst">Qiskit Aqua</a></li>
 <li><a class="reference external" href="https://github.com/Qiskit/qiskit-chemistry/blob/master/.github/CONTRIBUTING.rst">Qiskit Chemistry</a></li>
@@ -1417,6 +1467,39 @@ following Python code:</p>
 </div>
 <p>Refer to <a class="reference internal" href="advanced_use_of_ibm_q_devices.html#advanced-use-of-ibm-q-devices-label"><span class="std std-ref">Advanced Use of IBM Q Devices</span></a> for more details, such as
 how to manage multiple IBM Q account credentials.</p>
+</div>
+<div class="section" id="checking-which-version-is-installed">
+<h2>Checking Which Version is Installed<a class="headerlink" href="#checking-which-version-is-installed" title="Permalink to this headline">¶</a></h2>
+<p>Since the Qiskit project is actually a constellation of different elements
+simply printing the version string can be misleading. When you run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit</span>
+<span class="n">qiskit</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+<p>This only gives you the version for the qiskit-terra package. This is because
+the <code class="docutils literal notranslate"><span class="pre">qiskit</span></code> namespace in python doesn’t come from the qiskit package, but
+instead is part of the qiskit-terra package.</p>
+<p>Instead if you would like to see the version of all the qiskit elements
+installed in your environment you can use the <code class="docutils literal notranslate"><span class="pre">__qiskit_version</span></code> attribute.
+This will return a dictionary of the different qiskit packages and the
+installed versions. For example, running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">qiskit</span>
+<span class="n">qiskit</span><span class="o">.</span><span class="n">__qiskit_version__</span>
+</pre></div>
+</div>
+<p>will return a dictionary like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="s1">&#39;qiskit-terra&#39;</span><span class="p">:</span> <span class="s1">&#39;0.7.1&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;qiskit&#39;</span><span class="p">:</span> <span class="s1">&#39;0.8.0&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;qiskit-ignis&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;qiskit-aer&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1.0&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;qiskit-ibmq-provider&#39;</span><span class="p">:</span> <span class="s1">&#39;0.1rc2&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;qiskit-aqua&#39;</span><span class="p">:</span> <span class="kc">None</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you’re filing an issue or need to share your installed qiskit versions for
+something you should use the <code class="docutils literal notranslate"><span class="pre">__qiskit_version__</span></code> attribute.</p>
 </div>
 </div>
 

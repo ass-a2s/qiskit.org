@@ -59,6 +59,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="../search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -84,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
@@ -339,7 +356,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -682,6 +699,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="../search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -707,6 +740,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../install.html#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../install.html#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a><ul>
@@ -962,7 +996,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -1320,6 +1354,7 @@ of the quantum circuits modeling the specific problems.</p>
 <li><span class="xref std std-ref">Support Vector Machine Quantum Kernel (QSVM Kernel)</span></li>
 <li><span class="xref std std-ref">Support Vector Machine Variational (QSVM Variational)</span></li>
 <li><span class="xref std std-ref">HHL algorithm for solving linear systems (HHL)</span></li>
+<li><span class="xref std std-ref">Shor’s Factoring Algorithm</span></li>
 </ul>
 <p>Aqua includes  also some <a class="reference external" href="#classical-reference-algorithms">classical algorithms</a>
 for generating reference values. This feature of Aqua may be
@@ -1353,113 +1388,6 @@ developers interested in
 <p class="first admonition-title">See also</p>
 <p class="last">Section <a class="reference internal" href="extending.html#aqua-extending"><span class="std std-ref">Contributing to Aqua</span></a> provides more
 details on how to extend Aqua with new components.</p>
-</div>
-<div class="topic" id="mct">
-<p class="topic-title first">Multiple-Control Toffoli (MCT) Operation</p>
-<p>The <em>Multiple-Control Toffoli (mct)</em> operation, as the name suggests, is
-a generalization of the quantum Toffoli gate s.t. one target qubit is
-controlled by an arbitrary number of control qubits for a NOT (<cite>x</cite>) operation.
-The MCT operation can be used as the building block
-for implementing various different quantum algorithms, such as Grover’s
-search algorithm.</p>
-<p>For the different numbers 0, 1, 2,&nbsp;… of controls, we have corresponding
-quantum gates <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">cx</span></code>, <code class="docutils literal notranslate"><span class="pre">ccx</span></code>,&nbsp;… The first three are basic/well-known
-quantum gates. In Aqua, the mct operation provides support for arbitrary
-numbers of controls, in particular, 3 or above.</p>
-<p>Currently three different implementation strategies are included: <em>basic</em>,
-<em>advanced</em>, and <em>noancilla</em>. The basic mode employs a textbook
-implementation, where a series of <code class="docutils literal notranslate"><span class="pre">ccx</span></code> Toffoli gates are linked
-together in a <code class="docutils literal notranslate"><span class="pre">V</span></code> shape to achieve the desired Multiple-Control Toffoli
-operation. This mode requires <span class="math notranslate nohighlight">\(n-2\)</span> ancillary qubits, where
-<span class="math notranslate nohighlight">\(n\)</span> is the number of controls. For the advanced mode, the <code class="docutils literal notranslate"><span class="pre">cccx</span></code>
-and <code class="docutils literal notranslate"><span class="pre">ccccx</span></code> operations are achieved without needing ancillary
-qubits. Multiple-Control Toffoli operations for higher
-number of controls (5 and above) are implemented recursively using these
-lower-number-of-control cases. For the noancilla mode, no ancillary
-qubits are needed even for higher number of controls. This uses a
-technique of spliting multiple-control Toffoli operations, which is
-efficient up to 8 controls but gets inefficient in the number of required
-basic gates for values above. This technique relies on <code class="docutils literal notranslate"><span class="pre">mcu1</span></code>, see
-<span class="xref std std-ref">mcux</span> for more information.</p>
-<p>Aqua’s mct operation can be invoked from a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object
-using the <code class="docutils literal notranslate"><span class="pre">mct</span></code> API, which expects a list <code class="docutils literal notranslate"><span class="pre">q_controls</span></code> of control qubits,
-a target qubit <code class="docutils literal notranslate"><span class="pre">q_target</span></code>, and a list <code class="docutils literal notranslate"><span class="pre">q_ancilla</span></code> of ancillary qubits.
-An optional keyword argument <code class="docutils literal notranslate"><span class="pre">mode</span></code> can also be passed in to indicate
-whether the <code class="docutils literal notranslate"><span class="pre">'basic'</span></code>, <code class="docutils literal notranslate"><span class="pre">'advanced'</span></code>, or <code class="docutils literal notranslate"><span class="pre">'noancilla'</span></code> mode is chosen.
-If omitted, this argument defaults to <code class="docutils literal notranslate"><span class="pre">'basic'</span></code>.</p>
-</div>
-<div class="topic" id="mcux">
-<p class="topic-title first">Multiple-Control U1 and U3 Rotation (MCU1 and MCU3) Operation</p>
-<p>The <em>Multiple-Control Rotation (mcu)</em> operation, implements a U1 (<cite>u1</cite>)
-or a U3 (<cite>u3</cite>) rotation gate on a single target qubit with an arbitrary
-number of control qubits. The MCU1 operation takes one rotation angle
-as input parameter, whereas the MCU3 operation takes three for arbitrary
-rotations. No ancillary qubits are needed. It is efficiently implemented
-by using a grey code sequence for up to 8 control qubits. For larger
-number of controls this implementation gets very inefficient.</p>
-<p>Aqua’s mcu1 and mcu3 operations can be invoked from a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code>
-object and expect a list <code class="docutils literal notranslate"><span class="pre">control_qubits</span></code> of control qubits and a target
-qubit <code class="docutils literal notranslate"><span class="pre">target_qubit</span></code> as well as an angle <code class="docutils literal notranslate"><span class="pre">theta</span></code> for the mcu1 and
-additionally two angles <code class="docutils literal notranslate"><span class="pre">phi</span></code> and <code class="docutils literal notranslate"><span class="pre">lam</span></code> for the mcu3.</p>
-</div>
-<div class="topic" id="mcmt">
-<p class="topic-title first">Multiple-Control Multiple-Target (MCMT) Operation</p>
-<p>The <em>Multiple-Control Multiple-Target (mcmt)</em> operation, as the name suggests,
-allows to generalize a single-control, single-target gate (such as <cite>cz</cite>) to
-support multiple control qubits and multiple target qubits.
-In other words, the single-control gate passed as argument is applied to all
-the target qubits if all the control qubits are active.</p>
-<p>The kind of gate to apply can be passed as a parameter and should be a single
-control gate already defined for a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object (such as
-<code class="docutils literal notranslate"><span class="pre">QuantumCircuit.cz</span></code> or <code class="docutils literal notranslate"><span class="pre">QuantumCircuit.ch</span></code>).</p>
-<p>Currently, just one implementation strategy is implemented: <em>basic</em>. It
-employs almost the same strategy adopted for the basic mode of <cite>mct</cite>:
-multiple Toffoli gates are chained together to get the logical <cite>AND</cite> of
-all the control qubits on a single ancilla qubit, which is then used as the
-control of the single-control gate function.</p>
-<p>This mode requires <span class="math notranslate nohighlight">\(n-1\)</span> ancillary qubits, where <span class="math notranslate nohighlight">\(n\)</span> is the
-number of controls. Compare this with <code class="docutils literal notranslate"><span class="pre">mct</span></code> mode which uses <span class="math notranslate nohighlight">\(n-2\)</span>
-ancillary qubits for the same strategy. The difference is due to the fact
-that in <code class="docutils literal notranslate"><span class="pre">mct</span></code> the chain ends with a single <code class="docutils literal notranslate"><span class="pre">ccx</span></code> writing on the target
-qubit, while in <code class="docutils literal notranslate"><span class="pre">mcmt</span></code> the chain ends with the <code class="docutils literal notranslate"><span class="pre">ccx</span></code> writing on an
-ancillary qubit, which is then used as the control qubit of the single-control
-gate function.</p>
-<p>Aqua’s mcmt operation can be invoked from a <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> object
-using the <code class="docutils literal notranslate"><span class="pre">mcmt</span></code> API, which expects a list <code class="docutils literal notranslate"><span class="pre">q_controls</span></code> of control qubits,
-a list <code class="docutils literal notranslate"><span class="pre">q_targets</span></code> of target qubits, a list <code class="docutils literal notranslate"><span class="pre">q_ancilla</span></code> of ancillary qubits
-that must be off and are promised to be off after the function call, and a
-function <code class="docutils literal notranslate"><span class="pre">single_control_gate_fun</span></code> which is the generic function to
-apply to the <code class="docutils literal notranslate"><span class="pre">q_targets</span></code> qubits. An optional keyword argument <code class="docutils literal notranslate"><span class="pre">mode</span></code> can
-also be passed in to indicate the mode, but at the moment only the <code class="docutils literal notranslate"><span class="pre">'basic'</span></code>
-mode is supported. If omitted, this argument defaults to <code class="docutils literal notranslate"><span class="pre">'basic'</span></code>.</p>
-</div>
-<div class="topic" id="boolean-logic-expr">
-<p class="topic-title first">Circuit Construction for Boolean Logic Expressions</p>
-<p>Aqua provides a set of utilities
-capable of constructing circuits
-for simple boolean logic expressions.
-Currently three types of expressions are supported:
-Conjunctive Normal Forms (<code class="docutils literal notranslate"><span class="pre">CNF</span></code>), Disjunctive Normal Forms (<code class="docutils literal notranslate"><span class="pre">DNF</span></code>), and
-Exclusive Sum of Products (<code class="docutils literal notranslate"><span class="pre">ESOP</span></code>).
-These utilities are used internally by Aqua
-for constructing various <a class="reference internal" href="oracles.html#oracles"><span class="std std-ref">Oracles</span></a>,
-and can be accessed programmatically to build circuits for other purposes.
-For initialization of each of the three types of objects,
-the corresponding logic expression
-can be specified as a tuple corresponding to the Abstract Syntax Tree (AST)
-of the desired expression,
-where each literal’s absolute value indicates a variable,
-and a negative sign indicates the negation of the corresponding variable.
-The logic operations represented by the inner and outer lists
-depend on the particular type (CNF, DNF, or ESOP) of objects being created.
-For example, below is the AST for a simple CNF expression:</p>
-<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="s1">&#39;and&#39;</span><span class="p">,</span>
-  <span class="p">(</span><span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)),</span>
-  <span class="p">(</span><span class="s1">&#39;or&#39;</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;lit&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
-</pre></div>
-</div>
-<p>Aqua’s <span class="xref std std-ref">mct</span> operations are used
-for building the CNF, DNF, and ESOP circuits.</p>
 </div>
 <div class="section" id="quantum-algorithms">
 <span id="id2"></span><h2>Quantum Algorithms<a class="headerlink" href="#quantum-algorithms" title="Permalink to this headline">¶</a></h2>
@@ -1560,6 +1488,10 @@ An initial state from Aqua’s <a class="reference internal" href="initial_state
 <p>An optional list of <span class="math notranslate nohighlight">\(2p\)</span> <code class="docutils literal notranslate"><span class="pre">float</span></code> values  may be provided as the starting <code class="docutils literal notranslate"><span class="pre">beta</span></code> and <code class="docutils literal notranslate"><span class="pre">gamma</span></code> parameters
 (as identically named in the original <a class="reference external" href="https://arxiv.org/abs/1411.4028">QAOA paper</a>) for the QAOA variational form.
 If such list is not provided, QAOA will simply start with the all-zero vector.</p>
+<p>An optional <code class="docutils literal notranslate"><span class="pre">Operator</span></code> may be provided as a custom mixer Hamiltonian. This allows, as discussed in <cite>this paper
+&lt;https://doi.org/10.1103/PhysRevApplied.5.034007&gt;</cite> for quantum annealing, and in <cite>this paper
+&lt;https://arxiv.org/abs/1709.03489&gt;</cite> for QAOA, to run constrained optimization problems where the mixer constrains
+the evolution to a feasible subspace of the full Hilbert space.</p>
 </li>
 </ul>
 <p>Similar to VQE, an optimizer may also be specified.</p>
@@ -1648,7 +1580,7 @@ the <a class="reference internal" href="initial_states.html#hartree-fock"><span 
 functions.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Inverse Quantum Fourier Transforms</span></a> and <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>
+<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> and <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>
 for more details.</p>
 </div>
 <p>In addition to requiring an IQFT and an initial state as part of its
@@ -1806,7 +1738,7 @@ indicates a hit or miss for any given record.  More formally, an
 <span class="math notranslate nohighlight">\(f\)</span> as specified above.  Given an input <span class="math notranslate nohighlight">\(x \in X\)</span>,
 <span class="math notranslate nohighlight">\(O_f\)</span> implements <span class="math notranslate nohighlight">\(f(x)\)</span>.  The details of how <span class="math notranslate nohighlight">\(O_f\)</span> works are
 unimportant; Grover’s search algorithm treats the oracle as a black box.
-Currently, Aqua provides a <span class="xref std std-ref">logic_expr_oracle</span> and a <a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a>,
+Currently, Aqua provides a <span class="xref std std-ref">logic_expr_oracle</span> and a <span class="xref std std-ref">truth_table_oracle</span>,
 both of which can be used in Grover’s search tasks.
 In particular, the <span class="xref std std-ref">logic_expr_oracle</span>
 can take as input a SAT problem instance in
@@ -1878,8 +1810,8 @@ function maps all inputs to 0 or 1, and a balanced function maps half of its
 inputs to 0 and the other half to 1.
 Any of the oracles provided by Aqua can be used with the Deutsch-Jozsa algorithm,
 as long as the boolean function implemented by the oracle indeed satisfies the constraint of being
-either constant or balanced. Above said, a <span class="xref std std-ref">truth-table-oracle</span> instance might be easier to
-construct to meet the constraint, but a <span class="xref std std-ref">logic-expr-oracle</span> can certainly also be used.</p>
+either constant or balanced. Above said, a <a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> instance might be easier to
+construct to meet the constraint, but a <a class="reference internal" href="oracles.html#logical-expression-oracle"><span class="std std-ref">Logical Expression Oracle</span></a> can certainly also be used.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
 <p>When referring to Deutsch-Jozsa declaratively inside Aqua, its code
@@ -1920,7 +1852,7 @@ if <span class="math notranslate nohighlight">\(y=x \oplus s\)</span> for all <s
 1-to-1 (or, permutation) function. Otherwise, if <span class="math notranslate nohighlight">\(s \neq 0\ldots 0\)</span>,
 then <span class="math notranslate nohighlight">\(f_s\)</span> is a 2-to-1 function.
 Of Aqua’s included oracles,
-<span class="xref std std-ref">truth-table-oracle</span> should be the easiest to use to create one that can be used with the
+<a class="reference internal" href="oracles.html#truth-table-oracle"><span class="std std-ref">Truth Table Oracle</span></a> should be the easiest to use to create one that can be used with the
 Simon algorith.</p>
 <div class="topic">
 <p class="topic-title first">Declarative Name</p>
@@ -2038,7 +1970,7 @@ the implementation in a larger quantum program.</p>
 supported.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
-<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Inverse Quantum Fourier Transforms</span></a>,  <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>, <a class="reference internal" href="eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>, <a class="reference internal" href="reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a>
+<p class="last">Consult the documentation on <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>,  <a class="reference internal" href="initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>, <a class="reference internal" href="eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>, <a class="reference internal" href="reciprocals.html#reciprocals"><span class="std std-ref">Reciprocals</span></a>
 for more details. <a class="reference external" href="https://arxiv.org/abs/0811.3171">The original paper is accessible on arxiv.</a></p>
 </div>
 <p>HHL requires eigenvalue estimation using QPE (<a class="reference internal" href="eigs.html#eigs"><span class="std std-ref">Eigenvalues</span></a>), the eigenvalue
@@ -2052,6 +1984,32 @@ Aqua dynamically discovers and loads it, is <code class="docutils literal notran
 <div class="topic">
 <p class="topic-title first">Problems Supported</p>
 <p>In Aqua, HHL supports the <code class="docutils literal notranslate"><span class="pre">linear_system</span></code> problem.</p>
+</div>
+</div>
+<div class="section" id="shor-s-factory-algorithm-shor">
+<span id="shor"></span><h3>Shor’s Factory Algorithm (Shor)<a class="headerlink" href="#shor-s-factory-algorithm-shor" title="Permalink to this headline">¶</a></h3>
+<p>Shor’s Factoring algorithm is one of the most well-known quantum algorithms.
+It takes advantage of <a class="reference internal" href="iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> circuits
+and finds the prime factors for input integer <span class="math notranslate nohighlight">\(N\)</span> in polynomial time.
+The Shor’s algorithm included in Aqua is adapted from
+<a class="reference external" href="https://github.com/ttlion/ShorAlgQiskit">this implementation</a>.</p>
+<p>The only input parameter is the number <code class="docutils literal notranslate"><span class="pre">N</span></code> that is to be factored,
+which is expected to be an odd integer greater than 2.
+Even though our implementation is general,
+its capability will be limited by the capacity of the simulator/hardware.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">For more details, please see <a class="reference external" href="https://github.com/ttlion/ShorAlgQiskit">this implementation</a>
+and <a class="reference external" href="https://arxiv.org/abs/quant-ph/0205095">this paper</a>.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">Declarative Name</p>
+<p>When referring to Shor’s algorithm declaratively inside Aqua, its code <code class="docutils literal notranslate"><span class="pre">name</span></code>, by which
+Aqua dynamically discovers and loads it, is <code class="docutils literal notranslate"><span class="pre">Shor</span></code>.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">Problems Supported</p>
+<p>In Aqua, Shor’s algorithm supports the <code class="docutils literal notranslate"><span class="pre">factoring</span></code> problem.</p>
 </div>
 </div>
 </div>

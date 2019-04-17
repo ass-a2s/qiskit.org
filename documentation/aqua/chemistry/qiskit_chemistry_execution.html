@@ -59,6 +59,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="../../search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -84,6 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a><ul>
@@ -339,7 +356,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -682,6 +699,22 @@
           </a>
       </span>
     
+
+<div id="searchbox" role="search">
+    <div class="searchformwrapper">
+    <form class="search-form" action="../../search.html" method="get">
+      <input type="text" name="q" class="search-input" placeholder="Search docs..."/>
+        <button type="submit" class="search-button">
+            <svg height="20" width="20" fill="#6F6F6F" viewBox="0 0 32 32" class="search-button-icon">
+                <title>search</title>
+                <g>
+                    <path d="M30 28.586l-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L28.586 30zM5 14a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9z"></path>
+                </g>
+            </svg>
+        </button>
+    </form>
+    </div>
+</div>
 <div class="globaltoc">
   <span class="mdl-layout-title toc">Table Of Contents</span>
   
@@ -707,6 +740,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#install">Install</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#install-from-source">Install from Source</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../install.html#access-ibm-q-devices">Access IBM Q Devices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../install.html#checking-which-version-is-installed">Checking Which Version is Installed</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../getting_started.html">Getting Started</a><ul>
@@ -962,7 +996,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../oracles.html">Oracles</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../oracles.html#logic-expression-oracle">Logic Expression Oracle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../oracles.html#logical-expression-oracle">Logical Expression Oracle</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../oracles.html#truth-table-oracle">Truth Table Oracle</a></li>
 </ul>
 </li>
@@ -1417,7 +1451,7 @@ classical computation software with a given molecular configuration,
 extracts from that execution the molecular structural data necessary to form
 the input to one of the Aqua quantum algorithms, and finally invokes that algorithm
 to build, compile and execute a circuit modeling the experiment on top of a quantum
-machine.  An example of this is available in the <a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials/blob/master/chemistry/PySCF_end2end.ipynb">PySCF_end2end tutorial</a>.</p>
+machine.  An example of this is available in the <a class="reference external" href="https://github.com/Qiskit/qiskit-tutorials/blob/master/community/aqua/chemistry/PySCF_end2end.ipynb">PySCF_end2end tutorial</a>.</p>
 </div>
 <div class="section" id="declarative-programming-interface">
 <h4>Declarative Programming Interface<a class="headerlink" href="#declarative-programming-interface" title="Permalink to this headline">¶</a></h4>
@@ -1819,10 +1853,10 @@ allow the user to choose and configure an optimizer and a variational form
 from the <a class="reference internal" href="../optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a> and <a class="reference internal" href="../variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a> libraries, respectively,
 whereas <a class="reference internal" href="../algorithms.html#qpe"><span class="std std-ref">Quantum Phase Estimation (QPE)</span></a>
 allows the user to configure which Inverse Quantum Fourier Transform (IQFT) from the
-<a class="reference internal" href="../iqfts.html#iqfts"><span class="std std-ref">Inverse Quantum Fourier Transforms</span></a> library to use.</p>
+<a class="reference internal" href="../iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a> library to use.</p>
 <p>The documentation of <a class="reference internal" href="../library.html#aqua-library"><span class="std std-ref">Aqua: A Library of Quantum Algorithms</span></a>
 explains how to configure <a class="reference internal" href="../algorithms.html#quantum-algorithms"><span class="std std-ref">Quantum Algorithms</span></a> and any of the pluggable entities they may use,
-such as <a class="reference internal" href="../optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a>, <a class="reference internal" href="../variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>, <a class="reference internal" href="../oracles.html#oracles"><span class="std std-ref">Oracles</span></a>, <a class="reference internal" href="../iqfts.html#iqfts"><span class="std std-ref">Inverse Quantum Fourier Transforms</span></a>, and
+such as <a class="reference internal" href="../optimizers.html#optimizers"><span class="std std-ref">Optimizers</span></a>, <a class="reference internal" href="../variational_forms.html#variational-forms"><span class="std std-ref">Variational Forms</span></a>, <a class="reference internal" href="../oracles.html#oracles"><span class="std std-ref">Oracles</span></a>, <a class="reference internal" href="../iqfts.html#iqfts"><span class="std std-ref">Quantum Fourier Transforms</span></a>, and
 <a class="reference internal" href="../initial_states.html#initial-states"><span class="std std-ref">Initial States</span></a>.</p>
 <p>Here is an example in which the <a class="reference internal" href="../algorithms.html#vqe"><span class="std std-ref">Variational Quantum Eigensolver (VQE)</span></a> algorithm
 is selected along with the <a class="reference internal" href="../optimizers.html#l-bfgs-b"><span class="std std-ref">Limited-memory Broyden-Fletcher-Goldfarb-Shanno Bound (L-BFGS-B)</span></a> optimizer and the
